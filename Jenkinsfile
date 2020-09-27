@@ -1,28 +1,51 @@
 pipeline {
-    agent any
 
-    stages {
-        stage('Maven Compile') {
-            steps {
-                    echo 'Project compile stage'
-                    bat label: 'Compilation running', script: '''mvn compile'''
-                
-            }
+ agent any
+
+ stages {
+
+ stage('Build') {
+
+ steps {
+
+ echo 'Maven Test, Compile and Packaging using jenkinsfile .'
+
+
+
 }
 
-stage('Unit Test') {
-            steps {
-                    echo 'Project Testing stage'
-                    bat label: 'Test running', script: '''mvn test'''
-                
-            }
-}
+ }
 
-stage('Maven Package') {
-            steps {
-                    echo 'Project pacakaging stage'
-                    bat label: 'Project running', script: '''mvn package'''
-                
-            }
-}
-}}
+ stage('Compile') {
+
+ steps {
+
+ bat 'mvn compile'
+
+ }
+
+ }
+
+ stage('Test') {
+
+ steps {
+
+ bat 'mvn test'
+
+ }
+
+ }
+
+ stage('Install') {
+
+ steps {
+
+ bat 'mvn install'
+
+ }
+
+ }
+
+ }
+
+ }
